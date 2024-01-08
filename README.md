@@ -29,9 +29,11 @@ ssh-keygen -t rsa -b 2048 -C "tomek.szkaradek1127@gmail.com"
 cat ~/.ssh/id_rsa.pub
 
 
-
-
-
+pip install virtualenv
+python -m venv env
+env\Scripts\activate
+pip install -r requirements.txt
+deactivate
 
 2 web app
 sql
