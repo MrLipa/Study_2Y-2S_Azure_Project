@@ -5,7 +5,7 @@ ogarnąc funkcje (jak sie da testy i deploy na github actions)
 
 
 
-
+gfh
 
 
 
