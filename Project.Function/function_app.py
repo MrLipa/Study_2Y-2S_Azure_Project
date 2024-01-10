@@ -3,9 +3,9 @@ import logging
 from MealOptimizer import MealOptimizer
 import json
 
-app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
-@app.route(route="http_trigger", methods=['POST'])
+@app.route(route="optimize_meal", methods=['POST'])
 def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
