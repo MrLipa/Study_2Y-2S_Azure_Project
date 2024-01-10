@@ -25,8 +25,8 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
-      - name: Name
-        run: dotnet tool install -g dotnet-ef
+      - name: Install EF Core CLI
+        run: dotnet tool install --global dotnet-ef --version 7.x.x
 
       - name: Run tests
         run: dotnet test
