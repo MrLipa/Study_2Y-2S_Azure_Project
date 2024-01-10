@@ -125,7 +125,6 @@ dmypy.json
 # Azure Functions artifacts
 bin
 obj
-appsettings.json
 local.settings.json
 
 # Azurite artifacts
@@ -135,3 +134,5 @@ __azurite_db*__.json
 .python_packages
 
 .vs/
+Project/terraform.tfstate
+terraform.tfstate
