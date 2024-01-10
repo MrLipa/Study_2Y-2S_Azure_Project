@@ -22,11 +22,11 @@ jobs:
           dotnet-version: '7.x'
           include-prerelease: true
 
+      - name: Install EF Core CLI
+        run: dotnet tool install --global dotnet-ef --version 7.0
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
-
-      - name: Install EF Core CLI
-        run: dotnet tool install --global dotnet-ef --version 7.x.x
 
       - name: Run tests
         run: dotnet test
