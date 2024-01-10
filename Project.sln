@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementy rozwiązania", "El
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		db.sql = db.sql
+		main.tf = main.tf
 		README.md = README.md
 	EndProjectSection
 EndProject

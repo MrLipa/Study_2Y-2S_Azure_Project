@@ -4,6 +4,7 @@ Remove-Migration InitialCreate
 Add-Migration InitialCreate
 Update-Database
 dotnet build
+dotnet tool install -g dotnet-ef
 dotnet ef migrations remove
 dotnet ef migrations add NazwaMigracji
 dotnet ef database update
@@ -16,10 +17,10 @@ env\Scripts\activate
 func start
 
 
-daæ na gitlaba
-wdro¿yæ na azure razem z testami na githuba ctions i z baz¹ danych 
+daï¿½ na gitlaba
+wdroï¿½yï¿½ na azure razem z testami na githuba ctions i z bazï¿½ danych 
 dodac alerty logi metryki inisgiht
-dodaæ funkcje 
+dodaï¿½ funkcje 
 cosmosdb do logowania sesji
 terraform
 
@@ -27,6 +28,38 @@ terraform
 
 ssh-keygen -t rsa -b 2048 -C "tomek.szkaradek1127@gmail.com"
 cat ~/.ssh/id_rsa.pub
+
+Resource Group
+App Service Plan
+Webb App
+
+Function APPP z testami 
+data storage server
+zrobiï¿½ zmiennï¿½ sodkowiskï¿½ ktï¿½rï¿½ ï¿½atwo mozna zmienicac connection string
+terraform
+
+
+terraform --version
+az version cli przynajmniej 2
+az upgrade
+az login tutaj mam crudentiale
+.azure tam pliki acccess token itd
+az config set core.allow_broker=true
+az account clear
+az login
+
+terraform init
+terraform fmt
+terraform validate
+terraform plan
+terraform apply
+yes
+terraform destroy
+
+
+
+
+
 
 
 pip install virtualenv
@@ -38,7 +71,7 @@ deactivate
 2 web app
 sql
 blob
-wdra¿anie testy na azurze
+wdraï¿½anie testy na azurze
 azure function
 cosmosdb
 alerty logowanie metryki aplication ingist
@@ -65,25 +98,25 @@ micorserwis
 rejestracja
 logowanie
 pobranie(wszystkie/konkretny) dodawanie usuwanie edycja usera
-dodanie usuniecie posi³ku UserMeals zjedzonego
+dodanie usuniecie posiï¿½ku UserMeals zjedzonego
 
 mikroserwis
-pobranie(wszystkie/konkretny) dodawanie usuwanie edycja produktów
+pobranie(wszystkie/konkretny) dodawanie usuwanie edycja produktï¿½w
 
 mikroserwis
-pobranie(wszystkie/konkretny) dodawanie usuwanie edycja posi³ków dodanie tranzakcji
-Odpalenie Algorytmu Podajesz List(IDS) Limity Tworzy Posi³ek zapisuje do bazy danych
+pobranie(wszystkie/konkretny) dodawanie usuwanie edycja posiï¿½kï¿½w dodanie tranzakcji
+Odpalenie Algorytmu Podajesz List(IDS) Limity Tworzy Posiï¿½ek zapisuje do bazy danych
 
 
 
 
-user dodaje do siebie posi³ków ile chce 
-wystielenie ile zjad³ 
-ustawnie limitów
-przy ka¿dym posi³ku liczy i ostrzega
-mo¿e dodac swój albo poprosi alborytm o spersjonalizowanie
-sworzenie posi³ku na podstaiw listy produktów 
+user dodaje do siebie posiï¿½kï¿½w ile chce 
+wystielenie ile zjadï¿½ 
+ustawnie limitï¿½w
+przy kaï¿½dym posiï¿½ku liczy i ostrzega
+moï¿½e dodac swï¿½j albo poprosi alborytm o spersjonalizowanie
+sworzenie posiï¿½ku na podstaiw listy produktï¿½w 
 odpalanie funckji po podaniu limity i odpalenie funkcji
 zapisanie wyniku do hsitori 
-wyœwietlenie histori
+wyï¿½wietlenie histori
 

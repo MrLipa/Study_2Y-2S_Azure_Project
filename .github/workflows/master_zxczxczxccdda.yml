@@ -28,6 +28,12 @@ jobs:
       - name: Run tests
         run: dotnet test
 
+      - name: Apply migrations
+        run: dotnet ef database update
+
+      - name: Seed database
+        run: dotnet run seeddata
+
       - name: dotnet publish
   
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp

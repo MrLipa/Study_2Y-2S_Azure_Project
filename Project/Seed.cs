@@ -14,12 +14,24 @@ namespace Project
             this.dataContext = context;
         }
 
+        private void ClearDatabase()
+        {
+            dataContext.UserMeals.RemoveRange(dataContext.UserMeals);
+            dataContext.MealProducts.RemoveRange(dataContext.MealProducts);
+            dataContext.Meals.RemoveRange(dataContext.Meals);
+            dataContext.Products.RemoveRange(dataContext.Products);
+            dataContext.AppUsers.RemoveRange(dataContext.AppUsers);
+            dataContext.SaveChanges();
+        }
+
         public void SeedDataContext()
         {
+            ClearDatabase();
+
             var appUsers = new List<AppUser>
             {
-                new AppUser { Username = "admin", PasswordHash = "admin", Email = "admin@example.com", CreatedAt = DateTime.UtcNow },
-                new AppUser { Username = "user", PasswordHash = "user", Email = "user@example.com", CreatedAt = DateTime.UtcNow }
+                new AppUser { Username = "admin", PasswordHash = "admin", Email = "admin@example.com", CreatedAt = DateTime.UtcNow, DailyCalorieGoal = 2500f, DailyProteinGoal = 150f, DailyFatGoal = 70f, DailyCarbohydratesGoal = 300f },
+                new AppUser { Username = "user", PasswordHash = "user", Email = "user@example.com", CreatedAt = DateTime.UtcNow, DailyCalorieGoal = 2000f, DailyProteinGoal = 120f, DailyFatGoal = 50f, DailyCarbohydratesGoal = 250f }
             };
             dataContext.AppUsers.AddRange(appUsers);
             dataContext.SaveChanges();
