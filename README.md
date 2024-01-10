@@ -10,6 +10,9 @@ dotnet ef migrations add NazwaMigracji
 dotnet ef database update
 dotnet run seeddata
 
+dotnet ef database update --project ./Project --connection "Server=tcp:project-sql-server-2137.database.windows.net,1433;Initial Catalog=project-sql-database;Persist Security Info=False;User ID=admin2137;Password=Admin123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+
+
 netstat -ano | findstr :5147
 taskkill /F /PID [PID]
 

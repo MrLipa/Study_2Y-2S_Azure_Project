@@ -32,10 +32,10 @@ jobs:
         run: dotnet test
 
       - name: Apply migrations
-        run: dotnet ef database update --project ./Project
+        run: dotnet ef database update --project ./Project --connection "Server=tcp:project-sql-server-2137.database.windows.net,1433;Initial Catalog=project-sql-database;Persist Security Info=False;User ID=admin2137;Password=Admin123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 
       - name: Seed database
-        run: dotnet run seeddata --project ./Project
+        run: dotnet run seeddata --project ./Project --connection "Server=tcp:project-sql-server-2137.database.windows.net,1433;Initial Catalog=project-sql-database;Persist Security Info=False;User ID=admin2137;Password=Admin123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 
       - name: dotnet publish
   
