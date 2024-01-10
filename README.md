@@ -1,5 +1,14 @@
 # Getting Started
 
+ogarnąc funkcje (jak sie da testy i deploy na github actions)
+
+
+
+
+
+
+
+
 Remove-Migration InitialCreate
 Add-Migration InitialCreate
 Update-Database
