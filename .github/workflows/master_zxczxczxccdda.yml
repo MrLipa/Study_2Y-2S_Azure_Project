@@ -32,10 +32,10 @@ jobs:
         run: dotnet test
 
       - name: Apply migrations
-        run: dotnet ef database update
+        run: dotnet ef database update --project ./Project
 
       - name: Seed database
-        run: dotnet run seeddata
+        run: dotnet run seeddata --project ./Project
 
       - name: dotnet publish
   
