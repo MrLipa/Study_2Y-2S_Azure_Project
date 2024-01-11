@@ -1,5 +1,15 @@
 # Getting Started
 
+ogarnac sql który sie wkleja
+ogarnąc autmatyczne deployment center
+ogarnąc variable do robienia connection string i function stringa
+ogarnąc sloty 
+ogarnąć monitoring 
+ogarnąc endpointy na zwrócenie limitów 
+ogarnąc endpointa na obecny dzienny limi z sumy posiłków
+
+
+
 ogarnąc funkcje (jak sie da testy i deploy na github actions)
 
 
@@ -59,6 +69,10 @@ az login tutaj mam crudentiale
 az config set core.allow_broker=true
 az account clear
 az login
+
+terraform init
+terraform plan # This will output the changes on the Azure env that terraform will make
+terrafrom apply -auto-approve
 
 terraform init
 terraform fmt

@@ -15,10 +15,45 @@ provider "azurerm" {
 # Resource Group
 resource "azurerm_resource_group" "project" {
   name     = "project-resources"
-  location = "Poland Central"
+  location = "East US"
   tags = {
     environment = "Production"
   }
+}
+
+# App Service Plan for Function App
+resource "azurerm_app_service_plan" "project_function_app_service_plan" {
+  name                = "project-function-app-service-plan"
+  location            = azurerm_resource_group.project.location
+  resource_group_name = azurerm_resource_group.project.name
+  kind                = "Linux"
+  reserved            = true
+
+  sku {
+    tier = "Standard"
+    size = "S1"
+  }
+}
+
+# Function App
+resource "azurerm_function_app" "project_function_app" {
+  name                = "project-function-app-2137"
+  location            = azurerm_resource_group.project.location
+  resource_group_name = azurerm_resource_group.project.name
+  app_service_plan_id = azurerm_app_service_plan.project_function_app_service_plan.id
+  os_type             = "linux"
+
+  storage_account_name       = azurerm_storage_account.project_storage_account.name
+  storage_account_access_key = azurerm_storage_account.project_storage_account.primary_access_key
+}
+
+# Storage Account dla Function App
+resource "azurerm_storage_account" "project_storage_account" {
+  name                     = "cstorsdfgdsfg345342"
+  resource_group_name      = azurerm_resource_group.project.name
+  location                 = azurerm_resource_group.project.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 }
 
 # App Service Plan
@@ -73,39 +108,4 @@ resource "azurerm_sql_database" "project_sql_database" {
   tags = {
     environment = "Production"
   }
-}
-
-# App Service Plan for Function App
-resource "azurerm_app_service_plan" "project_function_app_service_plan" {
-  name                = "project-app-service-plan-function"
-  location            = azurerm_resource_group.project.location
-  resource_group_name = azurerm_resource_group.project.name
-  kind                = "Linux"
-  reserved            = true
-
-  sku {
-    tier = "Standard"
-    size = "S1"
-  }
-}
-
-# Storage Account dla Function App
-resource "azurerm_storage_account" "project_storage_account" {
-  name                     = "projstgacctfunc"
-  resource_group_name      = azurerm_resource_group.project.name
-  location                 = azurerm_resource_group.project.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
-
-# Function App
-resource "azurerm_function_app" "project_function_app" {
-  name                = "project-function-app-2137"
-  location            = azurerm_resource_group.project.location
-  resource_group_name = azurerm_resource_group.project.name
-  app_service_plan_id = azurerm_app_service_plan.project_function_app_service_plan.id
-  os_type             = "linux"
-
-  storage_account_name       = azurerm_storage_account.project_storage_account.name
-  storage_account_access_key = azurerm_storage_account.project_storage_account.primary_access_key
 }
