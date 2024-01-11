@@ -1,4 +1,8 @@
-name: Build and deploy Python project to Azure Function App - kjhiuhui
+# Docs for the Azure Web Apps Deploy action: https://github.com/azure/functions-action
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+# More info on Python, GitHub Actions, and Azure Functions: https://aka.ms/python-webapps-actions
+
+name: Build and deploy Python project to Azure Function App - sdfghsddfgdfgdfg
 
 on:
   push:
@@ -7,8 +11,8 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'Project.Function'
-  PYTHON_VERSION: '3.11' 
+  FUNCTIONAPP_FOLDER: 'Project.Function' ###########
+  PYTHON_VERSION: '3.11' # set this to the python version to use (supports 3.6, 3.7, 3.8)
 
 jobs:
   build:
@@ -28,14 +32,12 @@ jobs:
           source venv/bin/activate
 
       - name: Install dependencies
-        run: pip install -r ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/requirements.txt
+        run: pip install -r ${{ env.FUNCTIONAPP_FOLDER }}/requirements.txt #############
 
-      # Opcjonalnie: Dodaj krok do uruchamiania testów tutaj
+      # Optional: Add step to run tests here
 
       - name: Zip artifact for deployment
-        run: |
-          cd Project.Function
-          zip -r ../release.zip . # Zmiana katalogu i zasięgu zip
+        run: cd ${{ env.FUNCTIONAPP_FOLDER }} && zip -r ../release.zip ./* ############
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -63,9 +65,9 @@ jobs:
         uses: Azure/functions-action@v1
         id: deploy-to-function
         with:
-          app-name: 'kjhiuhui'
+          app-name: 'sdfghsddfgdfgdfg'
           slot-name: 'Production'
-          package: '.'
+          package: '.' #################
           scm-do-build-during-deployment: true
           enable-oryx-build: true
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EEA43B49802F4C3EA75E8FFA681DB40F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2BB571AE6B604D318DCBA12594176BC4 }}
