@@ -51,7 +51,7 @@ resource "azurerm_app_service" "project_web_app" {
 resource "azurerm_sql_server" "project_sql_database_server" {
   name                         = "project-sql-server-2137"
   resource_group_name          = azurerm_resource_group.project.name
-  location                     = "Poland Central"
+  location                     = azurerm_resource_group.project.location
   version                      = "12.0"
   administrator_login          = "admin2137"
   administrator_login_password = "Admin123"
@@ -73,4 +73,39 @@ resource "azurerm_sql_database" "project_sql_database" {
   tags = {
     environment = "Production"
   }
+}
+
+# App Service Plan for Function App
+resource "azurerm_app_service_plan" "project_function_app_service_plan" {
+  name                = "project-app-service-plan-function"
+  location            = azurerm_resource_group.project.location
+  resource_group_name = azurerm_resource_group.project.name
+  kind                = "Linux"
+  reserved            = true
+
+  sku {
+    tier = "Standard"
+    size = "S1"
+  }
+}
+
+# Storage Account dla Function App
+resource "azurerm_storage_account" "project_storage_account" {
+  name                     = "projstgacctfunc"
+  resource_group_name      = azurerm_resource_group.project.name
+  location                 = azurerm_resource_group.project.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
+
+# Function App
+resource "azurerm_function_app" "project_function_app" {
+  name                = "project-function-app-2137"
+  location            = azurerm_resource_group.project.location
+  resource_group_name = azurerm_resource_group.project.name
+  app_service_plan_id = azurerm_app_service_plan.project_function_app_service_plan.id
+  os_type             = "linux"
+
+  storage_account_name       = azurerm_storage_account.project_storage_account.name
+  storage_account_access_key = azurerm_storage_account.project_storage_account.primary_access_key
 }
