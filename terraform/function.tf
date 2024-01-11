@@ -12,7 +12,7 @@ resource "random_string" "storage_account_name" {
 }
 
 resource "azurerm_storage_account" "function" {
-  name                     = "${random_string.storage_account_name.result}"
+  name                     = random_string.storage_account_name.result
   resource_group_name      = azurerm_resource_group.main.name
   location                 = azurerm_resource_group.main.location
   account_tier             = "Standard"

@@ -22,5 +22,9 @@ resource "azurerm_windows_web_app" "main" {
   https_only          = true
 
   site_config {
+    application_stack {
+      current_stack  = "dotnet"
+      dotnet_version = "v7.0"
+    }
   }
 }
