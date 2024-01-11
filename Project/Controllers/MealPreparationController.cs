@@ -60,9 +60,8 @@ namespace Project.Controllers
 
             var payload = new { products, limits = request.Limits };
             var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
-            
             var url = $"{"http://localhost:7071/api"}/http_trigger";
-            var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+            
             var response = await _httpClient.PostAsync(url, content);
 
             if (response.IsSuccessStatusCode)
