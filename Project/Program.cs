@@ -4,6 +4,7 @@ using Project;
 using Project.Data;
 using Project.Interfaces;
 using Project.Repositories;
+using Project.Helper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyDbConnection")));
+builder.Services.Configure<ExternalApiSettings>(builder.Configuration.GetSection("ExternalApi"));
 
 var app = builder.Build();
 

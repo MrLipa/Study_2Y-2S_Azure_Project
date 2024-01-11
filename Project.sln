@@ -15,7 +15,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementy rozwiązania", "El
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Tests", "Project.Tests\Project.Tests.csproj", "{4C69B804-4C8D-43F4-9A8C-8716A66419D2}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Project.Function", "Project.Function\Project.Function.pyproj", "{2C75EE53-B4B3-4804-84EA-3D826239CC31}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "terraform", "terraform", "{9068CD8B-3297-4E07-ACDE-FF54FDF00772}"
+	ProjectSection(SolutionItems) = preProject
+		terraform\app-insight.tf = terraform\app-insight.tf
+		terraform\function.tf = terraform\function.tf
+		terraform\main.tf = terraform\main.tf
+		terraform\README.md = terraform\README.md
+		terraform\sql-database.tf = terraform\sql-database.tf
+		terraform\sql-server.tf = terraform\sql-server.tf
+		terraform\variable.tf = terraform\variable.tf
+		terraform\version.tf = terraform\version.tf
+		terraform\web-app.tf = terraform\web-app.tf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "other", "other", "{1223AA24-2FC7-48DC-8FC4-FF973FB75BB2}"
+	ProjectSection(SolutionItems) = preProject
+		other\creater-infra.yaml = other\creater-infra.yaml
+		other\main.tf = other\main.tf
+		other\master_function.yml = other\master_function.yml
+		other\master_web_app.yml = other\master_web_app.yml
+	EndProjectSection
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Project.Function", "Project.Function\Project.Function.pyproj", "{2CBEE4EE-F5F0-44A1-84FC-FD0C9332D31C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,11 +52,15 @@ Global
 		{4C69B804-4C8D-43F4-9A8C-8716A66419D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C69B804-4C8D-43F4-9A8C-8716A66419D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C69B804-4C8D-43F4-9A8C-8716A66419D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C75EE53-B4B3-4804-84EA-3D826239CC31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C75EE53-B4B3-4804-84EA-3D826239CC31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CBEE4EE-F5F0-44A1-84FC-FD0C9332D31C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CBEE4EE-F5F0-44A1-84FC-FD0C9332D31C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9068CD8B-3297-4E07-ACDE-FF54FDF00772} = {8969A725-9DE4-4C46-B1AF-C230451D6504}
+		{1223AA24-2FC7-48DC-8FC4-FF973FB75BB2} = {8969A725-9DE4-4C46-B1AF-C230451D6504}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4FAB4968-F774-4B24-B7D9-4D0CCDB1E739}

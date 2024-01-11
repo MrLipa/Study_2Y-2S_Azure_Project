@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using Project.Models;
 using Project.Repositories;
 using Project.Interfaces;
+using Project.Helper;
+using Microsoft.Extensions.Options;
 
 namespace Project.Controllers
 {
@@ -14,17 +16,19 @@ namespace Project.Controllers
     public class MealPreparationController : ControllerBase
     {
         private readonly HttpClient _httpClient;
+        private readonly ExternalApiSettings _externalApiSettings;
         private readonly IProductRepository _productRepository;
         private readonly IMealRepository _mealRepository;
         private readonly IMealProductRepository _mealProductRepository;
 
 
-        public MealPreparationController(IHttpClientFactory httpClientFactory, IProductRepository productRepository, IMealRepository mealRepository, IMealProductRepository mealProductRepository)
+        public MealPreparationController(IHttpClientFactory httpClientFactory, IProductRepository productRepository, IMealRepository mealRepository, IMealProductRepository mealProductRepository, IOptions<ExternalApiSettings> externalApiSettings)
         {
             _httpClient = httpClientFactory.CreateClient();
             _productRepository = productRepository;
             _mealRepository = mealRepository;
             _mealProductRepository = mealProductRepository;
+            _externalApiSettings = externalApiSettings.Value;
         }
 
         public class MealPreparationRequest
@@ -60,8 +64,8 @@ namespace Project.Controllers
 
             var payload = new { products, limits = request.Limits };
             var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
-            var url = $"{"http://localhost:7071/api"}/http_trigger";
-            
+            var url = _externalApiSettings.BaseUrl;
+
             var response = await _httpClient.PostAsync(url, content);
 
             if (response.IsSuccessStatusCode)

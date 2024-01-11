@@ -1,5 +1,11 @@
 # Getting Started
 
+
+Data Source=LENOVO_LIPA\SQLEXPRESS;Initial Catalog=azure-project;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False
+
+
+
+
 ogarnac sql który sie wkleja
 ogarnąc autmatyczne deployment center
 ogarnąc variable do robienia connection string i function stringa
@@ -35,7 +41,7 @@ dotnet ef database update --project ./Project --connection "Server=tcp:project-s
 netstat -ano | findstr :5147
 taskkill /F /PID [PID]
 
-env\Scripts\activate
+.venv\Scripts\activate
 func start
 
 

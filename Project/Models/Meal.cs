@@ -12,11 +12,11 @@
     public class ProductInfoo
     {
         public string ProductName { get; set; }
-        public float Calories { get; set; }
-        public float Protein { get; set; }
-        public float Fat { get; set; }
-        public float Carbohydrates { get; set; }
-        public float QuantityInGrams { get; set; }
+        public double Calories { get; set; }
+        public double Protein { get; set; }
+        public double Fat { get; set; }
+        public double Carbohydrates { get; set; }
+        public double QuantityInGrams { get; set; }
     }
 
     public class NutritionalSummary

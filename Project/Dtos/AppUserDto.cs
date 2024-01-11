@@ -7,9 +7,9 @@
         public string? PasswordHash { get; set; }
         public string? Email { get; set; }
         public DateTime CreatedAt { get; set; }
-        public float? DailyCalorieGoal { get; set; }
-        public float? DailyProteinGoal { get; set; }
-        public float? DailyFatGoal { get; set; }
-        public float? DailyCarbohydratesGoal { get; set; }
+        public double? DailyCalorieGoal { get; set; }
+        public double? DailyProteinGoal { get; set; }
+        public double? DailyFatGoal { get; set; }
+        public double? DailyCarbohydratesGoal { get; set; }
     }
 }
