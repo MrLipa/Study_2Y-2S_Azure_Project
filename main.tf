@@ -43,7 +43,7 @@ resource "azurerm_app_service" "project_web_app" {
   https_only          = true
 
   site_config {
-    windows_fx_version = "DOTNET|7.0"
+    windows_fx_version = "DOTNET|v7.0"
   }
 }
 
