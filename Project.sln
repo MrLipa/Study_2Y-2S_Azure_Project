@@ -10,7 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementy rozwiązania", "El
 		.gitignore = .gitignore
 		db.sql = db.sql
 		main.tf = main.tf
+		Prezentacja.pptx = Prezentacja.pptx
+		Project_Requirements_2023.pdf = Project_Requirements_2023.pdf
 		README.md = README.md
+		V-Additional-Azure-Resources.pdf = V-Additional-Azure-Resources.pdf
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Tests", "Project.Tests\Project.Tests.csproj", "{4C69B804-4C8D-43F4-9A8C-8716A66419D2}"

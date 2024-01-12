@@ -1,7 +1,47 @@
 # Getting Started
 
-
 Data Source=LENOVO_LIPA\SQLEXPRESS;Initial Catalog=azure-project;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False
+
+zrobić prezentacje
+ustawić variable do sql
+monitoring alerty logowanie metryki application insights
+dodać endpointy na zapisanie limitów dodatkowe endpointy
+cosmos db
+eventgrid
+messagebus
+może 2 serwisy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -15,14 +55,7 @@ ogarnąc endpointy na zwrócenie limitów
 ogarnąc endpointa na obecny dzienny limi z sumy posiłków
 
 
-
 ogarnąc funkcje (jak sie da testy i deploy na github actions)
-
-
-
-
-gfh
-
 
 
 Remove-Migration InitialCreate
@@ -89,11 +122,6 @@ yes
 terraform destroy
 
 
-
-
-
-
-
 pip install virtualenv
 python -m venv env
 env\Scripts\activate
@@ -108,21 +136,6 @@ azure function
 cosmosdb
 alerty logowanie metryki aplication ingist
 terraform
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
