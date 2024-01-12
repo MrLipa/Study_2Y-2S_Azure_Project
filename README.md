@@ -2,15 +2,11 @@
 
 Data Source=LENOVO_LIPA\SQLEXPRESS;Initial Catalog=azure-project;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False
 
-zrobić prezentacje
-ustawić variable do sql
 monitoring alerty logowanie metryki application insights
 dodać endpointy na zapisanie limitów dodatkowe endpointy
 cosmos db
 eventgrid
 messagebus
-może 2 serwisy
-
 
 
 
