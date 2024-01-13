@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Azure.Messaging.EventGrid;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace Project.Controllers
 {
+    [Authorize]
     [Route("api/test")]
     [ApiController]
     public class TestController : ControllerBase

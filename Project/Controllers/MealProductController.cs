@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Project.Interfaces;
 using Project.Models;
-using System.Collections.Generic;
+
 
 namespace Project.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MealProductController : ControllerBase

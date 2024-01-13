@@ -1,8 +1,7 @@
 ﻿using Project.Data;
 using Project.Interfaces;
 using Project.Models;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Project.Repositories
 {

@@ -8,12 +8,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementy rozwiązania", "Elementy rozwiązania", "{8969A725-9DE4-4C46-B1AF-C230451D6504}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		db.sql = db.sql
+		other\creater-infra.yaml = other\creater-infra.yaml
+		other\db.sql = other\db.sql
 		main.tf = main.tf
-		Prezentacja.pptx = Prezentacja.pptx
-		Project_Requirements_2023.pdf = Project_Requirements_2023.pdf
+		other\main.tf = other\main.tf
+		other\master_function.yml = other\master_function.yml
+		other\master_web_app.yml = other\master_web_app.yml
+		other\Project_Requirements_2023.pdf = other\Project_Requirements_2023.pdf
 		README.md = README.md
-		V-Additional-Azure-Resources.pdf = V-Additional-Azure-Resources.pdf
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Tests", "Project.Tests\Project.Tests.csproj", "{4C69B804-4C8D-43F4-9A8C-8716A66419D2}"

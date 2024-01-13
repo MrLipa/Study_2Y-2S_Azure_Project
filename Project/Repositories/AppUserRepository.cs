@@ -30,6 +30,23 @@ namespace Project.Repositories
             return user;
         }
 
+        public AppUser GetAppUserByEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                throw new ArgumentException("Email nie może być pusty.");
+            }
+
+            var user = _context.AppUsers.FirstOrDefault(u => u.Email == email);
+
+            if (user == null)
+            {
+                throw new KeyNotFoundException($"Użytkownik o Email {email} nie został znaleziony.");
+            }
+
+            return user;
+        }
+
         public void AddAppUser(AppUser appUser)
         {
             _context.AppUsers.Add(appUser);

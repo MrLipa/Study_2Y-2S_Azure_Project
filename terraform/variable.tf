@@ -13,7 +13,6 @@
 # variable "sql_server_password" {
 #   type = string
 # }
-
 variable "application_name" {
   type    = string
   default = "project"
@@ -33,4 +32,13 @@ variable "sql_server_login" {
 variable "sql_server_password" {
   type    = string
   default = "Admin123"
+}
+
+variable "function_name" {
+  type    = string
+  default = "213742069"
+}
+variable "web_app_name" {
+  type    = string
+  default = "213742069"
 }

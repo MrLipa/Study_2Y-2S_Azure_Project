@@ -1,8 +1,7 @@
 ﻿using Project.Data;
 using Project.Interfaces;
 using Project.Models;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Project.Repositories
 {
@@ -22,7 +21,13 @@ namespace Project.Repositories
 
         public Product GetProductById(int productId)
         {
-            return _context.Products.Find(productId);
+            var product = _context.Products.Find(productId);
+            if (product == null)
+            {
+                throw new Exception("Product not found.");
+            }
+
+            return product;
         }
 
         public void AddProduct(Product product)

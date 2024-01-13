@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Project.Interfaces;
 using Project.Models;
-using Project.Repositories;
 
 
 namespace Project.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MealController : ControllerBase
@@ -89,7 +90,7 @@ namespace Project.Controllers
         }
 
         [HttpGet("ProductsForMeal/{mealName}")]
-        public ActionResult<IEnumerable<ProductInfoo>> GetProductsForMeal(string mealName)
+        public ActionResult<IEnumerable<ProductInfo>> GetProductsForMeal(string mealName)
         {
             var products = _repository.GetProductsForMeal(mealName);
             if (products == null)

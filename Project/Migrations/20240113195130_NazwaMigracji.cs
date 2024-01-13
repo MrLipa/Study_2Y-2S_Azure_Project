@@ -20,11 +20,12 @@ namespace Project.Migrations
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DailyCalorieGoal = table.Column<float>(type: "real", nullable: true),
-                    DailyProteinGoal = table.Column<float>(type: "real", nullable: true),
-                    DailyFatGoal = table.Column<float>(type: "real", nullable: true),
-                    DailyCarbohydratesGoal = table.Column<float>(type: "real", nullable: true)
+                    DailyCalorieGoal = table.Column<double>(type: "float", nullable: true),
+                    DailyProteinGoal = table.Column<double>(type: "float", nullable: true),
+                    DailyFatGoal = table.Column<double>(type: "float", nullable: true),
+                    DailyCarbohydratesGoal = table.Column<double>(type: "float", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -51,10 +52,10 @@ namespace Project.Migrations
                     ProductId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Calories = table.Column<float>(type: "real", nullable: false),
-                    Protein = table.Column<float>(type: "real", nullable: false),
-                    Fat = table.Column<float>(type: "real", nullable: false),
-                    Carbohydrates = table.Column<float>(type: "real", nullable: false)
+                    Calories = table.Column<double>(type: "float", nullable: false),
+                    Protein = table.Column<double>(type: "float", nullable: false),
+                    Fat = table.Column<double>(type: "float", nullable: false),
+                    Carbohydrates = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,7 +93,7 @@ namespace Project.Migrations
                 {
                     MealId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    QuantityInGrams = table.Column<float>(type: "real", nullable: false)
+                    QuantityInGrams = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {

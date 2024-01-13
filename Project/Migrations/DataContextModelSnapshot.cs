@@ -17,7 +17,7 @@ namespace Project.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.14")
+                .HasAnnotation("ProductVersion", "7.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -33,17 +33,17 @@ namespace Project.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<float?>("DailyCalorieGoal")
-                        .HasColumnType("real");
+                    b.Property<double?>("DailyCalorieGoal")
+                        .HasColumnType("float");
 
-                    b.Property<float?>("DailyCarbohydratesGoal")
-                        .HasColumnType("real");
+                    b.Property<double?>("DailyCarbohydratesGoal")
+                        .HasColumnType("float");
 
-                    b.Property<float?>("DailyFatGoal")
-                        .HasColumnType("real");
+                    b.Property<double?>("DailyFatGoal")
+                        .HasColumnType("float");
 
-                    b.Property<float?>("DailyProteinGoal")
-                        .HasColumnType("real");
+                    b.Property<double?>("DailyProteinGoal")
+                        .HasColumnType("float");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -51,6 +51,9 @@ namespace Project.Migrations
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
@@ -87,8 +90,8 @@ namespace Project.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<float>("QuantityInGrams")
-                        .HasColumnType("real");
+                    b.Property<double>("QuantityInGrams")
+                        .HasColumnType("float");
 
                     b.HasKey("MealId", "ProductId");
 
@@ -105,21 +108,21 @@ namespace Project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
-                    b.Property<float>("Calories")
-                        .HasColumnType("real");
+                    b.Property<double>("Calories")
+                        .HasColumnType("float");
 
-                    b.Property<float>("Carbohydrates")
-                        .HasColumnType("real");
+                    b.Property<double>("Carbohydrates")
+                        .HasColumnType("float");
 
-                    b.Property<float>("Fat")
-                        .HasColumnType("real");
+                    b.Property<double>("Fat")
+                        .HasColumnType("float");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Protein")
-                        .HasColumnType("real");
+                    b.Property<double>("Protein")
+                        .HasColumnType("float");
 
                     b.HasKey("ProductId");
 

@@ -1,9 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Infrastructure;
-using Project.Data;
+﻿using Project.Data;
 using Project.Interfaces;
 using Project.Models;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Project.Repositories
 {
@@ -23,7 +21,13 @@ namespace Project.Repositories
 
         public Meal GetMealById(int mealId)
         {
-            return _context.Meals.Find(mealId);
+            var meal = _context.Meals.Find(mealId);
+            if (meal == null)
+            {
+                throw new Exception("Meal not found.");
+            }
+
+            return meal;
         }
 
         public void AddMeal(Meal meal)
@@ -47,11 +51,11 @@ namespace Project.Repositories
                 _context.SaveChanges();
             }
         }
-        public ICollection<ProductInfoo> GetProductsForMeal(string mealName)
+        public ICollection<ProductInfo> GetProductsForMeal(string mealName)
         {
             var products = _context.MealProducts
                 .Where(mp => mp.Meal.Name == mealName)
-                .Select(mp => new ProductInfoo
+                .Select(mp => new ProductInfo
                 {
                     ProductName = mp.Product.Name,
                     Calories = mp.Product.Calories,
@@ -81,7 +85,7 @@ namespace Project.Repositories
                 })
                 .FirstOrDefault();
 
-            return summary;
+            return summary ?? new MealNutritionalSummary();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Project.Interfaces
         void UpdateMeal(Meal meal);
         void DeleteMeal(int mealId);
 
-        ICollection<ProductInfoo> GetProductsForMeal(string mealName);
+        ICollection<ProductInfo> GetProductsForMeal(string mealName);
         MealNutritionalSummary GetNutritionalSummaryForMeal(string mealName);
     }
 }
