@@ -60,5 +60,13 @@ namespace Project.Repositories
 
             return meals;
         }
+
+        public IEnumerable<Meal> GetMealsByUserAndDateRange(int userId, DateTime startDate, DateTime endDate)
+        {
+            return _context.UserMeals
+                           .Where(um => um.UserId == userId && um.ConsumedAt >= startDate && um.ConsumedAt <= endDate)
+                           .Select(um => um.Meal)
+                           .ToList();
+        }
     }
 }

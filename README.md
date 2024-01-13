@@ -2,11 +2,12 @@
 
 Data Source=LENOVO_LIPA\SQLEXPRESS;Initial Catalog=azure-project;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False
 
-monitoring alerty logowanie metryki application insights
-dodać endpointy na zapisanie limitów dodatkowe endpointy
-cosmos db
-eventgrid
-messagebus
+zrboić endpoint na email i password login token zakodowany na 15 minut 
+zrobić endpoint na rejestracje 
+zrobić endpoint na wylogowanie
+zrobić endpoint na refresh token
+
+eventgrid topic dwa subskrupcje coś próbować 
 
 
 

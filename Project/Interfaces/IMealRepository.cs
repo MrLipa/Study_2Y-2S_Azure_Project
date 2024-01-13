@@ -11,6 +11,6 @@ namespace Project.Interfaces
         void DeleteMeal(int mealId);
 
         ICollection<ProductInfoo> GetProductsForMeal(string mealName);
-        NutritionalSummary GetNutritionalSummaryForMeal(string mealName);
+        MealNutritionalSummary GetNutritionalSummaryForMeal(string mealName);
     }
 }

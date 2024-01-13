@@ -19,7 +19,7 @@
         public double QuantityInGrams { get; set; }
     }
 
-    public class NutritionalSummary
+    public class MealNutritionalSummary
     {
         public string MealName { get; set; }
         public double TotalCalories { get; set; }

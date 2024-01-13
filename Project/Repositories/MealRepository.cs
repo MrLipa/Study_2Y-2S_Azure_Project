@@ -65,12 +65,12 @@ namespace Project.Repositories
             return products;
         }
 
-        public NutritionalSummary GetNutritionalSummaryForMeal(string mealName)
+        public MealNutritionalSummary GetNutritionalSummaryForMeal(string mealName)
         {
             var summary = _context.MealProducts
                 .Where(mp => mp.Meal.Name == mealName)
                 .GroupBy(mp => mp.Meal.Name)
-                .Select(g => new NutritionalSummary
+                .Select(g => new MealNutritionalSummary
                 {
                     MealName = g.Key,
                     TotalCalories = g.Sum(mp => mp.Product.Calories * mp.QuantityInGrams / 100),

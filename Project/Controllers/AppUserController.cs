@@ -12,6 +12,7 @@ namespace Project.Controllers
     public class AppUserController : ControllerBase
     {
         private readonly IAppUserRepository _repository;
+        private readonly IMealRepository _mealRepository;
         private readonly IMapper _mapper;
 
         public AppUserController(IAppUserRepository repository, IMapper mapper)
@@ -109,6 +110,55 @@ namespace Project.Controllers
             }
 
             return Ok(meals);
+        }
+
+        [HttpGet("{userId}/MealsInRange")]
+        public ActionResult<IEnumerable<MealDto>> GetMealsByUserAndDateRange(int userId, [FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
+        {
+            var meals = _repository.GetMealsByUserAndDateRange(userId, startDate, endDate);
+            if (meals == null)
+            {
+                return NotFound($"Nie znaleziono posiłków dla użytkownika o ID {userId} w podanym zakresie dat.");
+            }
+
+            var mealDtos = _mapper.Map<IEnumerable<MealDto>>(meals);
+            return Ok(mealDtos);
+        }
+
+        [HttpGet("{userId}/NutritionalSummaryInRange")]
+        public ActionResult GetNutritionalSummaryInRange(int userId, [FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
+        {
+            var meals = _repository.GetMealsByUserAndDateRange(userId, startDate, endDate);
+            if (meals == null || !meals.Any())
+            {
+                return NotFound($"Nie znaleziono posiłków dla użytkownika o ID {userId} w podanym zakresie dat.");
+            }
+
+            var user = _repository.GetAppUserById(userId);
+            if (user == null)
+            {
+                return NotFound($"Nie znaleziono użytkownika o ID {userId}.");
+            }
+
+            var userNutritionalSummary = new UserNutritionalSummary
+            {
+                Username = user.Username
+            };
+
+            foreach (var meal in meals)
+            {
+                var mealNutritionalSummary = _mealRepository.GetNutritionalSummaryForMeal(meal.Name);
+                if (mealNutritionalSummary != null)
+                {
+                    userNutritionalSummary.TotalCalories += mealNutritionalSummary.TotalCalories;
+                    userNutritionalSummary.TotalProtein += mealNutritionalSummary.TotalProtein;
+                    userNutritionalSummary.TotalFat += mealNutritionalSummary.TotalFat;
+                    userNutritionalSummary.TotalCarbohydrates += mealNutritionalSummary.TotalCarbohydrates;
+                    userNutritionalSummary.TotalWeight += mealNutritionalSummary.TotalWeight;
+                }
+            }
+
+            return Ok(userNutritionalSummary);
         }
     }
 }
