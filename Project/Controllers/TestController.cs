@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Project.Controllers
 {
-    [Authorize]
     [Route("api/test")]
     [ApiController]
     public class TestController : ControllerBase

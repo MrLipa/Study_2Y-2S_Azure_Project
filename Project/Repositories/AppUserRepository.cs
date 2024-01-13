@@ -39,11 +39,6 @@ namespace Project.Repositories
 
             var user = _context.AppUsers.FirstOrDefault(u => u.Email == email);
 
-            if (user == null)
-            {
-                throw new KeyNotFoundException($"Użytkownik o Email {email} nie został znaleziony.");
-            }
-
             return user;
         }
 
