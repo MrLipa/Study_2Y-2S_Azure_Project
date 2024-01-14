@@ -1,30 +1,23 @@
 # Getting Started
 
-terraform --version
-az version cli przynajmniej 2
-az upgrade
-az login tutaj mam crudentiale
-.azure tam pliki acccess token itd
-az config set core.allow_broker=true
-az account clear
-az login
+## Sprawdzenie wersji Azure CLI i aktualizacja
+az --version  
+az upgrade  
 
-terraform init
-terraform plan # This will output the changes on the Azure env that terraform will make
-terrafrom apply -auto-approve
+## Logowanie do Azure
+az login # Tutaj zaloguj się za pomocą swoich credentiale  
 
-terraform init
-terraform fmt
-terraform validate
-terraform plan
-terraform apply
-yes
-terraform destroy
+## Konfiguracja Azure CLI
+az config set core.allow_broker=true  
+az account clear  
+az login # Ponowne logowanie, jeśli jest to konieczne  
 
-
-project
-azure
-admin2137
-Admin123
-
-
+## Operacje Terraform
+terraform --version # Sprawdzenie wersji Terraform  
+terraform init      # Inicjalizacja Terraform  
+terraform fmt       # Formatowanie kodu Terraform  
+terraform validate  # Walidacja kodu Terraform  
+terraform plan      # Planowanie zmian infrastruktury  
+terraform apply     # Zastosowanie zmian infrastruktury  
+terraform apply -auto-approve # Automatyczne zastosowanie zmian  
+terraform destroy   # Usunięcie infrastruktury
