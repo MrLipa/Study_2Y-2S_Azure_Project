@@ -27,8 +27,32 @@ resource "azurerm_service_plan" "function" {
   sku_name            = "S1"
 }
 
-resource "azurerm_linux_function_app" "main" {
-  name                = "func-${var.application_name}-${var.environment_name}-${var.function_name}"
+resource "azurerm_linux_function_app" "prepare_meal" {
+  name                = "func-prepare-meal-${var.application_name}-${var.environment_name}-${var.function_name}"
+  # name                = "func-${var.application_name}-${var.environment_name}-${random_string.function_name.result}"
+  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.main.location
+
+  storage_account_name       = azurerm_storage_account.function.name
+  storage_account_access_key = azurerm_storage_account.function.primary_access_key
+  service_plan_id            = azurerm_service_plan.function.id
+
+  app_settings = {
+    "ENABLE_ORYX_BUILD"              = "true"
+    "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
+    "FUNCTIONS_WORKER_RUNTIME"       = "python"
+    "AzureWebJobsFeatureFlags"       = "EnableWorkerIndexing"
+  }
+
+  site_config {
+    application_stack {
+      python_version = "3.11"
+    }
+  }
+}
+
+resource "azurerm_linux_function_app" "send_mail" {
+  name                = "func-send-mail${var.application_name}-${var.environment_name}-${var.function_name}"
   # name                = "func-${var.application_name}-${var.environment_name}-${random_string.function_name.result}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location

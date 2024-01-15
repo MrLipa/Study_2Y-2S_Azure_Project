@@ -43,6 +43,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "other", "other", "{1223AA24
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Project.Function", "Project.Function\Project.Function.pyproj", "{2CBEE4EE-F5F0-44A1-84FC-FD0C9332D31C}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Project.FunctionSendEmail", "Project.FunctionSendEmail\Project.FunctionSendEmail.pyproj", "{BAF14AD7-C9E3-43C4-A9C6-66F9079E5BA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,8 @@ Global
 		{4C69B804-4C8D-43F4-9A8C-8716A66419D2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2CBEE4EE-F5F0-44A1-84FC-FD0C9332D31C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CBEE4EE-F5F0-44A1-84FC-FD0C9332D31C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF14AD7-C9E3-43C4-A9C6-66F9079E5BA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF14AD7-C9E3-43C4-A9C6-66F9079E5BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
