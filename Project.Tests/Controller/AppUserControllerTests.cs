@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Project.Controllers;
 using Project.Interfaces;
 using Project.Models;
+using Project.Repositories;
 using System.Collections.Generic;
 using Xunit;
 
@@ -13,12 +14,14 @@ namespace Project.Tests.Controller
     public class AppUserControllerTests
     {
         private readonly IAppUserRepository _appUserRepository;
+        private readonly IMealRepository _mealRepository;
         private readonly IMapper _mapper;
 
         public AppUserControllerTests()
         {
             _appUserRepository = A.Fake<IAppUserRepository>();
             _mapper = A.Fake<IMapper>();
+            _mealRepository = A.Fake<IMealRepository>();
         }
 
         [Fact]
@@ -28,7 +31,7 @@ namespace Project.Tests.Controller
             var users = A.Fake<ICollection<AppUserDto>>();
             var userList = A.Fake<IEnumerable<AppUserDto>>();
             A.CallTo(() => _mapper.Map<IEnumerable<AppUserDto>>(users)).Returns(userList);
-            var controller = new AppUserController(_appUserRepository, _mapper);
+            var controller = new AppUserController(_appUserRepository, _mapper, _mealRepository);
 
             // Act
             var result = controller.GetAllUsers();
@@ -47,7 +50,7 @@ namespace Project.Tests.Controller
             var fakeUserDto = A.Fake<AppUserDto>();
             A.CallTo(() => _appUserRepository.GetAppUserById(userId)).Returns(fakeUser);
             A.CallTo(() => _mapper.Map<AppUserDto>(fakeUser)).Returns(fakeUserDto);
-            var controller = new AppUserController(_appUserRepository, _mapper);
+            var controller = new AppUserController(_appUserRepository, _mapper, _mealRepository);
 
             // Act
             var result = controller.GetUserById(userId);
@@ -64,7 +67,7 @@ namespace Project.Tests.Controller
             var fakeAppUserDto = A.Fake<AppUserDto>();
             var fakeAppUser = A.Fake<AppUser>();
             A.CallTo(() => _mapper.Map<AppUser>(fakeAppUserDto)).Returns(fakeAppUser);
-            var controller = new AppUserController(_appUserRepository, _mapper);
+            var controller = new AppUserController(_appUserRepository, _mapper, _mealRepository);
 
             // Act
             var result = controller.CreateAppUser(fakeAppUserDto);
@@ -81,7 +84,7 @@ namespace Project.Tests.Controller
             var fakeUpdateAppUserDto = A.Fake<AppUserDto>();
             var fakeAppUser = A.Fake<AppUser>();
             A.CallTo(() => _appUserRepository.GetAppUserById(userId)).Returns(fakeAppUser);
-            var controller = new AppUserController(_appUserRepository, _mapper);
+            var controller = new AppUserController(_appUserRepository, _mapper, _mealRepository);
 
             // Act
             var result = controller.UpdateAppUser(userId, fakeUpdateAppUserDto);
@@ -109,7 +112,7 @@ namespace Project.Tests.Controller
                 UserMeals = new List<UserMeal>()
             };
             A.CallTo(() => _appUserRepository.GetAppUserById(userId)).Returns(fakeAppUser);
-            var controller = new AppUserController(_appUserRepository, _mapper);
+            var controller = new AppUserController(_appUserRepository, _mapper, _mealRepository);
 
             // Act
             var result = controller.DeleteAppUser(userId);

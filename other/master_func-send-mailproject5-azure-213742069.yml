@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure Functions: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python project to Azure Function App - func-prepare-meal-project2-azure-213742069
+name: Build and deploy Python project to Azure Function App - func-send-mailproject5-azure-213742069
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'Project.Function' # set this to the path to your web app project, defaults to the repository root
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'Project.FunctionSendEmail' # set this to the path to your web app project, defaults to the repository root
   PYTHON_VERSION: '3.11' # set this to the python version to use (supports 3.6, 3.7, 3.8)
 
 jobs:
@@ -68,15 +68,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_CB82995C6F2A40189886451A7C468A83 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_95FD615CE28B4C769BAC36024BEA8313 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5A0D3059F17E471AA8EAE018780A59AB }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_05F36FD7B5D14C948BA24B1E2F7A9348 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_53A73756824A432DA430C9EAC8DE0615 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B92D25210B34454D88155B2DDF9843EC }}
 
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
         id: deploy-to-function
         with:
-          app-name: 'func-prepare-meal-project2-azure-213742069'
+          app-name: 'func-send-mailproject5-azure-213742069'
           slot-name: 'Production'
           package: '.'
           scm-do-build-during-deployment: true
