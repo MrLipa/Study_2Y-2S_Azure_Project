@@ -21,7 +21,7 @@ namespace Project.Data
                 .HasKey(au => au.UserId);
 
             modelBuilder.Entity<UserMeal>()
-                .HasKey(um => new { um.UserId, um.MealId });
+                .HasKey(um => um.UserMealId);
 
             modelBuilder.Entity<UserMeal>()
                 .HasOne(um => um.AppUser)
@@ -34,7 +34,7 @@ namespace Project.Data
                 .HasForeignKey(um => um.MealId);
 
             modelBuilder.Entity<MealProduct>()
-                .HasKey(mp => new { mp.MealId, mp.ProductId });
+                .HasKey(mp => mp.MealProductId);
 
             modelBuilder.Entity<MealProduct>()
                 .HasOne(mp => mp.Meal)

@@ -16,10 +16,11 @@ namespace Project.Controllers
         private readonly IMealRepository _mealRepository;
         private readonly IMapper _mapper;
 
-        public AppUserController(IAppUserRepository repository, IMapper mapper)
+        public AppUserController(IAppUserRepository repository, IMapper mapper, IMealRepository mealRepository)
         {
             _repository = repository;
             _mapper = mapper;
+            _mealRepository = mealRepository;
         }
 
         [HttpGet]

@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Azure.Messaging.EventGrid;
-using Microsoft.AspNetCore.Authorization;
-
+using Project.Helper;
 
 namespace Project.Controllers
 {
@@ -10,10 +8,12 @@ namespace Project.Controllers
     public class TestController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private readonly EventGridHelper _eventGridHelper;
 
         public TestController(IConfiguration configuration)
         {
             _configuration = configuration;
+            _eventGridHelper = new EventGridHelper(configuration);
         }
 
         [HttpGet()]
@@ -32,30 +32,17 @@ namespace Project.Controllers
             return Ok(configValues);
         }
 
-        [HttpPost("sendEventToEventGrid")]
+        [HttpGet("sendEventToEventGrid")]
         public async Task<IActionResult> SendEventToEventGrid()
         {
-            string topicEndpoint = _configuration["EventGrid:TopicEndpoint"];
-            string topicKey = _configuration["EventGrid:TopicKey"];
+            var payload = new { email = "skyla.schulist85@ethereal.email", subject = "Test", message = "Test" };
 
-            var client = new EventGridPublisherClient(new Uri(topicEndpoint), new Azure.AzureKeyCredential(topicKey));
+            string subject = "Your Fixed Subject";
+            string eventType = "Your.Fixed.EventType";
 
-            var eventData = new EventGridEvent(
-                subject: $"test-event/{Guid.NewGuid()}",
-                eventType: "Test.Event",
-                dataVersion: "1.0",
-                data: new { Message = "Hello from ASP.NET Core!" }
-            );
+            await _eventGridHelper.SendEventToEventGrid(subject, eventType, payload);
 
-            try
-            {
-                await client.SendEventAsync(eventData);
-                return Ok("Zdarzenie zostało wysłane do Event Grid");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Błąd podczas wysyłania zdarzenia: {ex.Message}");
-            }
+            return Ok("Zdarzenie zostało wysłane do Event Grid");
         }
     }
 }

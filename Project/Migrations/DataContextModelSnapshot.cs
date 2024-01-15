@@ -84,6 +84,12 @@ namespace Project.Migrations
 
             modelBuilder.Entity("Project.Models.MealProduct", b =>
                 {
+                    b.Property<int>("MealProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MealProductId"));
+
                     b.Property<int>("MealId")
                         .HasColumnType("int");
 
@@ -93,7 +99,9 @@ namespace Project.Migrations
                     b.Property<double>("QuantityInGrams")
                         .HasColumnType("float");
 
-                    b.HasKey("MealId", "ProductId");
+                    b.HasKey("MealProductId");
+
+                    b.HasIndex("MealId");
 
                     b.HasIndex("ProductId");
 
@@ -131,18 +139,26 @@ namespace Project.Migrations
 
             modelBuilder.Entity("Project.Models.UserMeal", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("UserMealId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("MealId")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserMealId"));
 
                     b.Property<DateTime>("ConsumedAt")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("UserId", "MealId");
+                    b.Property<int>("MealId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserMealId");
 
                     b.HasIndex("MealId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserMeals");
                 });

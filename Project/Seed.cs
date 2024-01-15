@@ -29,8 +29,8 @@ namespace Project
 
             var appUsers = new List<AppUser>
             {
-                new AppUser { Username = "admin", PasswordHash = "admin", Email = "admin@example.com", CreatedAt = DateTime.UtcNow, DailyCalorieGoal = 2500f, DailyProteinGoal = 150f, DailyFatGoal = 70f, DailyCarbohydratesGoal = 300f },
-                new AppUser { Username = "user", PasswordHash = "user", Email = "user@example.com", CreatedAt = DateTime.UtcNow, DailyCalorieGoal = 2000f, DailyProteinGoal = 120f, DailyFatGoal = 50f, DailyCarbohydratesGoal = 250f }
+                new AppUser { Username = "admin", PasswordHash = "4H7QJp7SR2b6mvXKZu", Email = "margaretta.boehm@ethereal.email", CreatedAt = DateTime.UtcNow, DailyCalorieGoal = 2500f, DailyProteinGoal = 150f, DailyFatGoal = 70f, DailyCarbohydratesGoal = 300f },
+                new AppUser { Username = "user", PasswordHash = "x5MHGvu2vBbVjmxMXu", Email = "shaniya30@ethereal.email", CreatedAt = DateTime.UtcNow, DailyCalorieGoal = 2000f, DailyProteinGoal = 120f, DailyFatGoal = 50f, DailyCarbohydratesGoal = 250f }
             };
             dataContext.AppUsers.AddRange(appUsers);
             dataContext.SaveChanges();

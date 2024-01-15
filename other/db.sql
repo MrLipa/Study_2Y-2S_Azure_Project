@@ -37,27 +37,27 @@ CREATE TABLE dbo.Meals (
 );
 
 CREATE TABLE dbo.MealProducts (
+    MealProductId INT IDENTITY PRIMARY KEY,
     MealId INT NOT NULL,
     ProductId INT NOT NULL,
     QuantityInGrams FLOAT NOT NULL,
-    PRIMARY KEY (MealId, ProductId),
     FOREIGN KEY (MealId) REFERENCES Meals(MealId),
     FOREIGN KEY (ProductId) REFERENCES Products(ProductId)
 );
 
 CREATE TABLE dbo.UserMeals (
+    UserMealId INT IDENTITY PRIMARY KEY,
     UserId INT NOT NULL,
     MealId INT NOT NULL,
     ConsumedAt DATETIME NOT NULL,
-    PRIMARY KEY (UserId, MealId),
     FOREIGN KEY (UserId) REFERENCES AppUsers(UserId),
     FOREIGN KEY (MealId) REFERENCES Meals(MealId)
 );
 
 INSERT INTO dbo.AppUsers (Username, PasswordHash, Email, CreatedAt, DailyCalorieGoal, DailyProteinGoal, DailyFatGoal, DailyCarbohydratesGoal)
 VALUES 
-    ('admin', 'admin', 'admin@example.com', GETUTCDATE(), 2500, 150, 70, 300),
-    ('user', 'user', 'user@example.com', GETUTCDATE(), 2000, 120, 50, 250);
+    ('admin', '4H7QJp7SR2b6mvXKZu', 'margaretta.boehm@ethereal.email', GETUTCDATE(), 2500, 150, 70, 300),
+    ('user', 'x5MHGvu2vBbVjmxMXu', 'shaniya30@ethereal.email', GETUTCDATE(), 2000, 120, 50, 250);
 
 INSERT INTO dbo.Products (Name, Calories, Protein, Fat, Carbohydrates)
 VALUES 

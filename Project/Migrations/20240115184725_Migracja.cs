@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Project.Migrations
 {
     /// <inheritdoc />
-    public partial class NazwaMigracji : Migration
+    public partial class Migracja : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -66,13 +66,15 @@ namespace Project.Migrations
                 name: "UserMeals",
                 columns: table => new
                 {
+                    UserMealId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     MealId = table.Column<int>(type: "int", nullable: false),
                     ConsumedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserMeals", x => new { x.UserId, x.MealId });
+                    table.PrimaryKey("PK_UserMeals", x => x.UserMealId);
                     table.ForeignKey(
                         name: "FK_UserMeals_AppUsers_UserId",
                         column: x => x.UserId,
@@ -91,13 +93,15 @@ namespace Project.Migrations
                 name: "MealProducts",
                 columns: table => new
                 {
+                    MealProductId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     MealId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     QuantityInGrams = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MealProducts", x => new { x.MealId, x.ProductId });
+                    table.PrimaryKey("PK_MealProducts", x => x.MealProductId);
                     table.ForeignKey(
                         name: "FK_MealProducts_Meals_MealId",
                         column: x => x.MealId,
@@ -113,6 +117,11 @@ namespace Project.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_MealProducts_MealId",
+                table: "MealProducts",
+                column: "MealId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_MealProducts_ProductId",
                 table: "MealProducts",
                 column: "ProductId");
@@ -121,6 +130,11 @@ namespace Project.Migrations
                 name: "IX_UserMeals_MealId",
                 table: "UserMeals",
                 column: "MealId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserMeals_UserId",
+                table: "UserMeals",
+                column: "UserId");
         }
 
         /// <inheritdoc />
