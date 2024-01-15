@@ -112,7 +112,7 @@ namespace Project.Controllers
                 string eventType = "Your.Fixed.EventType";
                 await _eventGridHelper.SendEventToEventGrid(subject, eventType, payload);
             }
-            return Ok("Posiłek zjedzony");
+            return Ok(new { StatusMessage = "Posiłek zjedzony", DetailedMessage = message });
         }
 
         [HttpDelete("{userId}/{mealId}")]

@@ -2,8 +2,6 @@ import azure.functions as func
 import logging
 from MealOptimizer import MealOptimizer
 import json
-from azure.eventgrid import EventGridPublisherClient, EventGridEvent
-from azure.core.credentials import AzureKeyCredential
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
@@ -30,26 +28,4 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
     optimizer = MealOptimizer(products, limits)
     optimized_products = optimizer.optimize_meal()
 
-    # send_event_to_event_grid(optimized_products)
-
     return func.HttpResponse(json.dumps(optimized_products), status_code=200, mimetype="application/json")
-
-def send_event_to_event_grid(data):
-    topic_endpoint = ""
-    topic_key = ""
-
-    credential = AzureKeyCredential(topic_key)
-    client = EventGridPublisherClient(topic_endpoint, credential)
-
-    event = EventGridEvent(
-        subject="optimize_meal",
-        event_type="OptimizeMeal",
-        data_version="1.0",
-        data=data
-    )
-
-    try:
-        client.send(event)
-        logging.info("Event sent to Event Grid")
-    except Exception as e:
-        logging.error(f"Error sending event: {e}")

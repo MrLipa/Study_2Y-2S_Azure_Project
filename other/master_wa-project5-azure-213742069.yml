@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App - wa-project5-azure-213742069
+name: Build and deploy ASP.Net Core app to Azure Web App - wa-project-azure-213742069
 
 on:
   push:
@@ -63,7 +63,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'wa-project5-azure-213742069'
+          app-name: 'wa-project-azure-213742069'
           slot-name: 'Production'
           package: .
           
