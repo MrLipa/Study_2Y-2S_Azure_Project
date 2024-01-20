@@ -28,10 +28,10 @@ resource "azurerm_windows_web_app" "main" {
       dotnet_version = "v7.0"
     }
   }
-
+  
   app_settings = {
     "ConnectionStrings__MyDbConnection" = "Server=tcp:${azurerm_mssql_server.main.name}.database.windows.net,1433;Initial Catalog=${azurerm_mssql_database.main.name};Persist Security Info=False;User ID=${var.sql_server_login};Password=${var.sql_server_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-    "ExternalApi__BaseUrl" = "https://${azurerm_service_plan.function.name}.azurewebsites.net/api/optimize_meal",
+    "ExternalApi__BaseUrl" = "https://func-prepare-meal-${var.application_name}-${var.environment_name}-${var.function_name}.azurewebsites.net/api/optimize_meal",
     "EventGrid__TopicEndpoint" = "https://${azurerm_eventgrid_topic.main.name}.westeurope-1.eventgrid.azure.net/api/events",
     "EventGrid__TopicKey" = ""
   }

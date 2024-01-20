@@ -42,9 +42,9 @@ namespace Project.Controllers
             {
                 return BadRequest(ModelState);
             }
-
             var userMeal = _mapper.Map<UserMeal>(createUserMealDto);
             _repository.AddUserMeal(userMeal);
+
             var userId = createUserMealDto.UserId;
             var user = _appUserRepository.GetAppUserById(userId);
             if (user == null)
@@ -54,18 +54,17 @@ namespace Project.Controllers
 
             var startDate = DateTime.Today;
             var endDate = DateTime.Today.AddDays(1).AddTicks(-1);
-
             var meals = _appUserRepository.GetMealsByUserAndDateRange(userId, startDate, endDate);
             if (meals == null || !meals.Any())
             {
-                return NotFound($"Nie znaleziono posiłków dla użytkownika o ID {userId} w dzisiejszym dniu.");
+                return NotFound($"Nie znaleziono posiłków dla użytkownika o ID {userId} w dzisiejszym dniu {startDate} - {endDate}.");
             }
+
             double totalCalories = 0;
             double totalProtein = 0;
             double totalFat = 0;
             double totalCarbohydrates = 0;
             double totalWeight = 0;
-
             foreach (var meal in meals)
             {
                 var mealNutritionalSummary = _mealRepository.GetNutritionalSummaryForMeal(meal.Name);
