@@ -15,7 +15,7 @@
 # }
 variable "application_name" {
   type    = string
-  default = "project1"
+  default = "project"
 }
 variable "environment_name" {
   type    = string
