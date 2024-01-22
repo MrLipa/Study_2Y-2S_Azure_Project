@@ -66,6 +66,8 @@ resource "azurerm_linux_function_app" "send_mail" {
     "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
     "FUNCTIONS_WORKER_RUNTIME"       = "python"
     "AzureWebJobsFeatureFlags"       = "EnableWorkerIndexing"
+    "EMAIL_USERNAME"                 = "carlie44@ethereal.email"
+    "EMAIL_PASSWORD"                 = "8fUAYpt3upPGcUwUEn"
   }
 
   site_config {

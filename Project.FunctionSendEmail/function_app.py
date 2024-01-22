@@ -2,6 +2,7 @@ import logging
 import azure.functions as func
 from EmailSender import EmailSender
 import json
+import os
 
 app = func.FunctionApp()
 
@@ -19,8 +20,13 @@ def EventGridTrigger(azeventgrid: func.EventGridEvent):
 
     logging.info(f'{email} {subject} {message}')
 
-    email_sender = EmailSender("carlie44@ethereal.email", 
-                               "8fUAYpt3upPGcUwUEn", 
+    email_username = os.environ.get('EMAIL_USERNAME', None)
+    email_password = os.environ.get('EMAIL_PASSWORD', None)
+
+    logging.info(f'Send by {email_username}')
+
+    email_sender = EmailSender(email_username, 
+                               email_password, 
                                "smtp.ethereal.email", 
                                587)
     

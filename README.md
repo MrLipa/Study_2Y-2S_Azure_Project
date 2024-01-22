@@ -10,6 +10,12 @@ dodaj do web appa event grid key
 wejdz do funkcji 1 i 2 oraz web appa i zró deployment na githuba master
 dostosuj plik githuba action według tego z other
 
+ogarnąc logi
+ogarnać metryki
+ogarnąć alarmy
+ogarnąc variable dla funkcji
+ogarnac swaggera dla azura
+
 
 
 
