@@ -19,8 +19,8 @@ def EventGridTrigger(azeventgrid: func.EventGridEvent):
 
     logging.info(f'{email} {subject} {message}')
 
-    email_sender = EmailSender("skyla.schulist85@ethereal.email", 
-                               "6j175MG4APf3h1qPgW", 
+    email_sender = EmailSender("carlie44@ethereal.email", 
+                               "8fUAYpt3upPGcUwUEn", 
                                "smtp.ethereal.email", 
                                587)
     
