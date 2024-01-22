@@ -10,6 +10,16 @@ dodaj do web appa event grid key
 wejdz do funkcji 1 i 2 oraz web appa i zró deployment na githuba master
 dostosuj plik githuba action według tego z other
 
+
+
+
+
+
+
+
+
+
+
 Remove-Migration InitialCreate
 Add-Migration InitialCreate
 Update-Database
