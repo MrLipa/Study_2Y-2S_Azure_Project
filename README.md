@@ -17,7 +17,6 @@ enable application ingisht na 3
 ogarnąc logi
 ogarnać metryki
 ogarnąć alarmy
-ogarnac swaggera dla azura
 
 
 

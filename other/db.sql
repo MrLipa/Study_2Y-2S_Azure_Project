@@ -19,7 +19,7 @@ CREATE TABLE dbo.AppUsers (
     DailyProteinGoal FLOAT NULL,
     DailyFatGoal FLOAT NULL,
     DailyCarbohydratesGoal FLOAT NULL,
-    RefreshToken NVARCHAR(500) NULL
+    RefreshToken NVARCHAR(1000) NULL
 );
 
 CREATE TABLE dbo.Products (
