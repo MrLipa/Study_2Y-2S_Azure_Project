@@ -74,9 +74,9 @@ void SeedData(IHost app)
         }
     }
 }
+bool swaggerEnabled = builder.Configuration.GetValue<bool>("SwaggerEnabled");
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (swaggerEnabled)
 {
     app.UseSwagger();
     app.UseSwaggerUI();
