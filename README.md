@@ -1,4 +1,11 @@
 # Getting Started
+- **Resource Visualizor:** ![rg-project-azure.png](rg-project-azure.png)
+
+
+
+
+
+
 
 terraform init 
 terraform validate
@@ -10,8 +17,12 @@ wejdz do funkcji 1 i 2 oraz web appa i zró deployment na githuba master
 dostosuj plik githuba action według tego z other
 event grid dodaj subskrypcje na funckje send email
 dodaj do web appa event grid key
-enable application ingisht na 3 
+enable application ingisht na 4 aplikacjach 
 
+dashborad pinuj pinestką metryki 
+do metryuki dodaj add alert 
+
+azure resource gorup Budgets zrób tam swój budget
 
 
 ogarnąc logi

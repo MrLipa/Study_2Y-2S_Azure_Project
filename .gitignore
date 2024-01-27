@@ -141,3 +141,7 @@ terraform.tfstate
 .terraform.tfstate.lock.info
 .terraform/
 terraform.tfstate.backup
+Project/Project.csproj.user
+Project.csproj.user
+Project/Properties/PublishProfiles/
+Project/Properties/ServiceDependencies/
