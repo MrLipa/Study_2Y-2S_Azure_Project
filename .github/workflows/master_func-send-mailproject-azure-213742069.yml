@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'Project.FunctionSendEmail' # set this to the path to your web app project, defaults to the repository root
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   PYTHON_VERSION: '3.11' # set this to the python version to use (supports 3.6, 3.7, 3.8)
 
 jobs:
@@ -32,12 +32,12 @@ jobs:
           source venv/bin/activate
 
       - name: Install dependencies
-        run: pip install -r ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/requirements.txt
+        run: pip install -r requirements.txt
 
       # Optional: Add step to run tests here
 
       - name: Zip artifact for deployment
-        run: cd ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }} && zip -r ../release.zip ./*
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -68,9 +68,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_12927FD064A94AF0BA7A2DA55B525E14 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_330F3CC9CC374335A749A2DDB90EF847 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7A9CC6DEBC25499380CE2C83117747F2 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_5C6E3F3FFCAB4C239B552B08E065DDEF }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C0C86DEC04954A7D893E9C3B112766C4 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_30F8B2FF31CF47518A6452624891C6CF }}
 
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
@@ -78,7 +78,7 @@ jobs:
         with:
           app-name: 'func-send-mailproject-azure-213742069'
           slot-name: 'Production'
-          package: '.'
+          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           scm-do-build-during-deployment: true
           enable-oryx-build: true
           
